@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate Generator</title>
+  <style>
+    /* CSS for certificate container */
+    .certificate-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+    }
+
+    /* CSS for text added on top of the image */
+    #nameText {
+      position: absolute;
+      top: 300px; /* Change these values to position the text */
+      left: 200px; /* Change these values to position the text */
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate-container">
+    <img src="picture.png" alt="Certificate Template">
+    <div id="nameText"></div>
+  </div>
+
+  <input type="text" id="name" placeholder="Enter Name">
+  <button onclick="addNameToCertificate()">Add Name</button>
+  <button onclick="downloadCertificate()">Download Certificate</button>
+
+  <script>
+    let certificateContent = '';
+
+    function addNameToCertificate() {
+      const name = document.getElementById('name').value;
+      const textContainer = document.getElementById('nameText');
+      textContainer.innerText = name;
+      certificateContent = name;
+    }
+
+    function downloadCertificate() {
+      if (!certificateContent) {
+        alert('Please add a name to generate the certificate.');
+        return;
+      }
+
+      const blob = new Blob([certificateContent], { type: 'text/plain' });
+      const downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = 'Generated_Certificate.txt';
+      downloadLink.click();
+    }
+  </script>
+</body>
+</html>
+cript>
+</body>
+</html>
+dy>
+</html>
